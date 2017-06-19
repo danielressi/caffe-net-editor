@@ -6,7 +6,7 @@ Created on Sun Jun 18 00:56:47 2017
 @author: danielressi
 """
 
-from caffeProtoEditor import CaffeProtoEditor
+from proto_editor import ProtoNetEditor
 import caffe
 from caffe import layers as L
 from caffe import params as P
@@ -43,7 +43,7 @@ data_train_test = L.Data(name='data3',top=['data','label'],batch_size = 32,
 #                                channels = 3)
 
 
-net = CaffeProtoEditor('myResNet')
+net = ProtoNetEditor('myResNet')
 
 net.putLayer(data_train)
 net.putLayer(data_valid)
