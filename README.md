@@ -13,10 +13,11 @@ In command line: change to directory ~/caffe-net-editor and execute "pip install
 
 # Usage
 * from proto_editor import ProtoNetEditor
-* Initialize a new protoEditor, with a name for the new net
+* Initialize a ProtoNetEditor with a name for the new net
 * Load existing caffe net definiton (.prototxt) with putModel()
-* Add / modify Layers
+* Add / modify layers
 * Save new net definition to file
+* ...brew in caffe/pycaffe
 
 # Note
 
