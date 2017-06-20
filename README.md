@@ -27,3 +27,4 @@ In command line: change to directory ~/caffe-net-editor and execute "pip install
 # Dependencies
 
 * caffe (with pycaffe): http://caffe.berkeleyvision.org/installation.html
+* Google protobuf
