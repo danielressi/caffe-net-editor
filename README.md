@@ -5,7 +5,7 @@ This work was created due to the lack of pycaffe documentation and missing contr
 
 Initially this API was developed to make ResNet-50 model ready for transfer learning (there is little information on the web on how to do this successfully. This should help. The example.py uses the ResNet architecture.)
 The original ResNet model can be found and downloaded here:
-[a link] https://github.com/KaimingHe/deep-residual-networks
+https://github.com/KaimingHe/deep-residual-networks
 
 # Install
 In command line: change to directory ~/caffe-net-editor and execute "pip install setup.py"
