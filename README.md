@@ -5,6 +5,9 @@ This work was created due to the lack of pycaffe documentation and missing contr
 
 Initially this API was developed to make ResNet-50 model ready for transfer learning (there is little information on the web on how to do this successfully. This should help. The example.py uses the ResNet architecture.)
 
+# Install
+change to directory ~/caffe-net-editor and execute pip install setup.py
+
 # Usage
 * Initialize a new protoEditor, with a name for the new net
 * Load existing caffe net definiton (.prototxt) with putModel()
