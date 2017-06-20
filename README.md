@@ -18,3 +18,7 @@ change to directory ~/caffe-net-editor and execute pip install setup.py
 
 * Layers can only be stacked (i.e. insertion at specific locations is not implemented yet)
 * Not compatible for old caffe definitions
+
+# Dependencies
+
+* caffe (with pycaffe): http://caffe.berkeleyvision.org/installation.html
