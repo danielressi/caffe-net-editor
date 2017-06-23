@@ -58,7 +58,8 @@ net.editLayer(name = 'fc1000',new_name = 'fc3',num_output = 3)
 loss = L.SoftmaxWithLoss(name = 'loss',bottom = ['fc3','label'])
 net.putLayer(loss)
 
-accuracy = L.Accuracy(name='accuracy',bottom = ['fc3','label'],include = {'phase':caffe.TEST})
+accuracy = L.Accuracy(name='accuracy',bottom = ['fc3','label'],
+                      include = {'phase':caffe.TEST})
 net.putLayer(accuracy)
 
 # Save new model    

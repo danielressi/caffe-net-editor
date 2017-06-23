@@ -41,7 +41,7 @@ class ProtoNetEditor(object):
             + save new model to file (prototxt)
     
     """    
-    def __init__(self,name):
+    def __init__(self, name):
         """ Initialize editor.
         Creates an empty caffe NetParameter.
        
@@ -56,7 +56,7 @@ class ProtoNetEditor(object):
         self.layer_types = None
         self.layer_names = None
 
-    def _editParams(self,layer_ind,lr_mult_list = None,decay_mult_list = None):
+    def _editParams(self, layer_ind, lr_mult_list=None, decay_mult_list=None):
         """ Edit learnable parameters of a layer. """
               
         num_params = len(self.net_spec.layer[layer_ind].param)          
@@ -79,8 +79,8 @@ class ProtoNetEditor(object):
                 self.net_spec.layer[layer_ind].param.pop()
     
             for lr_mult,decay_mult in zip(lr_mult_list,decay_mult_list):
-                self.net_spec.layer[layer_ind].param.add(lr_mult= lr_mult,
-                                                   decay_mult= decay_mult)
+                self.net_spec.layer[layer_ind].param.add(lr_mult=lr_mult,
+                                                   decay_mult=decay_mult)
                 
     def _updateLayers(self):
         """ Updates layer names and layer types in the editor. """
@@ -88,7 +88,7 @@ class ProtoNetEditor(object):
         self.layer_types = [l.type for l in self.net_spec.layer]
         self.layer_names = [l.name for l in self.net_spec.layer] 
         
-    def _setDeployInput(self,input_dim):
+    def _setDeployInput(self, input_dim):
         """ Set input attributes for deployment. """
         
         bottom_name = self.net_spec.layer[0].bottom[0]
@@ -111,7 +111,7 @@ class ProtoNetEditor(object):
             raise Exception("Error, no layers loaded yet!")
         
 
-        for layer_ind,layer_type in enumerate(self.layer_types):
+        for layer_ind, layer_type in enumerate(self.layer_types):
             if layer_type == 'Convolution' or layer_type == 'Scale':
                 if len(self.net_spec.layer[layer_ind].param) == 0:              
                     if self.net_spec.layer[layer_ind].convolution_param.bias_term == True:
@@ -124,7 +124,7 @@ class ProtoNetEditor(object):
                 [self.net_spec.layer[layer_ind].param.add(lr_mult= 0) for x in xrange(3)]   
   
     
-    def show(self,layer = None):
+    def show(self, layer=None):
         ''' Prints model or single layer if specified.
         
             Parameters
@@ -138,7 +138,7 @@ class ProtoNetEditor(object):
         else:
             ind = self.layer_names.index(layer)
             return self.net_spec.layer[ind]
-    def putLayer(self,Layer):
+    def putLayer(self, Layer):
         ''' Put a new caffe layer at the top of the new net.
         
             Parameters
@@ -159,7 +159,7 @@ class ProtoNetEditor(object):
             
         self._updateLayers()
         
-    def putModel(self,filename_in, auto_freeze = True):
+    def putModel(self, filename_in, auto_freeze=True):
         ''' Add all layers of an existing net to the new net.
         
             Parameters
@@ -182,7 +182,7 @@ class ProtoNetEditor(object):
         if auto_freeze == True:
             self.freezeAll()
             
-    def popLayer(self,until = None):
+    def popLayer(self, until=None):
         """ Remove Layer(s) from the top of the net.       
     
             Parameters
@@ -203,8 +203,8 @@ class ProtoNetEditor(object):
                    
         self._updateLayers() 
         
-    def editLayer(self,name,new_name=None,num_output = None,lr_mult = None,
-                          decay_mult= None,use_global_stats = None):
+    def editLayer(self, name, new_name=None, num_output=None, lr_mult=None,
+                          decay_mult=None, use_global_stats=None):
         """ Edit layer        
             
             Change name to initialize layer with random weights or edit
@@ -232,6 +232,7 @@ class ProtoNetEditor(object):
         
         index = self.layer_names.index(name)
         layer = self.net_spec.layer[index]
+
         if new_name is not None:
             layer.name = new_name
             layer.top[0] = new_name
@@ -245,7 +246,7 @@ class ProtoNetEditor(object):
             layer.batch_norm_param.use_global_stats = use_global_stats
         self._updateLayers() 
 
-    def deploy(self,input_dim = (1,3,224,224)):
+    def deploy(self, input_dim=(1,3,224,224)):
         """ Turn training model into test model.
         
             Removes layers of type "Data","SoftmaxWithLoss" and "Accuracy".
@@ -283,7 +284,7 @@ class ProtoNetEditor(object):
         self._updateLayers()
         self._setDeployInput(input_dim)
         
-    def save(self,filename_out):
+    def save(self, filename_out):
         """ Save net to file.       
     
             Parameters
